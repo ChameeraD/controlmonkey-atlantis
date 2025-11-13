@@ -12,7 +12,7 @@ resource "random_pet" "example" {
   length = 2
 }
 
-output "example_name" {
+output "example_pet_name" {
   description = "Example generated pet name"
   value       = random_pet.example.id
 }
