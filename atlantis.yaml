@@ -1,0 +1,23 @@
+version: 3
+projects:
+  - name: terraform
+    dir: terraform
+    autoplan:
+      enabled: true
+      when_modified:
+        - "**/*.tf"
+        - "**/*.tfvars"
+    workflow: default
+
+# Customize workflows if needed. Defaults generally suffice for most repos.
+workflows:
+  default:
+    plan:
+      steps:
+        - init -upgrade
+        - plan -out $PLANFILE
+    apply:
+      steps:
+        - apply -input=false $PLANFILE
+
+
